@@ -1,0 +1,11 @@
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/bin/Debug/net10.0/AquaGuard.Infrastructure.deps.json
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/bin/Debug/net10.0/AquaGuard.Infrastructure.dll
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/bin/Debug/net10.0/AquaGuard.Infrastructure.pdb
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/AquaGuard.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/AquaGuard.Infrastructure.AssemblyInfoInputs.cache
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/AquaGuard.Infrastructure.AssemblyInfo.cs
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/AquaGuard.Infrastructure.csproj.CoreCompileInputs.cache
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/AquaGuard.Infrastructure.dll
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/refint/AquaGuard.Infrastructure.dll
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/AquaGuard.Infrastructure.pdb
+/home/paulo/Projetos/AquaGuard/backend/src/AquaGuard.Infrastructure/obj/Debug/net10.0/ref/AquaGuard.Infrastructure.dll

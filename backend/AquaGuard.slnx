@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AquaGuard.Api/AquaGuard.Api.csproj" />
+    <Project Path="src/AquaGuard.Application/AquaGuard.Application.csproj" />
+    <Project Path="src/AquaGuard.Domain/AquaGuard.Domain.csproj" />
+    <Project Path="src/AquaGuard.Edge/AquaGuard.Edge.csproj" />
+    <Project Path="src/AquaGuard.Infrastructure/AquaGuard.Infrastructure.csproj" />
+  </Folder>
+</Solution>
