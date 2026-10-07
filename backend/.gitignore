@@ -1,0 +1,32 @@
+# Build output
+**/bin/
+**/obj/
+
+# .NET
+*.user
+*.suo
+artifacts/
+
+# IDEs and editors
+.vs/
+.vscode/
+.idea/
+*.sln.docstates
+*.swp
+*.swo
+
+# Test results and coverage
+TestResults/
+coverage/
+coverage.*
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.*.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
