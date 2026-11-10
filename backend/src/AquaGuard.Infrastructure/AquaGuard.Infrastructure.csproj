@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
+    <ProjectReference Include="../AquaGuard.Domain/AquaGuard.Domain.csproj" />
+    <ProjectReference Include="../AquaGuard.Application/AquaGuard.Application.csproj" />
+  </ItemGroup>
+
 </Project>

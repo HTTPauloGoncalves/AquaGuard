@@ -1,0 +1,75 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-aquaguard}
+      POSTGRES_USER: ${POSTGRES_USER:-aquaguard}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aquaguard-local}
+      POSTGRES_TEST_DB: ${POSTGRES_TEST_DB:-aquaguard_test}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - aquaguard-postgres:/var/lib/postgresql
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-aquaguard} -d ${POSTGRES_DB:-aquaguard}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile.api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__AquaGuard: Host=postgres;Port=5432;Database=${POSTGRES_DB:-aquaguard};Username=${POSTGRES_USER:-aquaguard};Password=${POSTGRES_PASSWORD:-aquaguard-local}
+    ports:
+      - "127.0.0.1:${API_PORT:-5226}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  aquaguard-simulator:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile.simulator
+    environment:
+      ASPNETCORE_URLS: http://+:8081
+      Api__BaseUrl: http://api:8080
+      Simulation__ReservoirId: ${RESERVOIR_ID:-00000000-0000-0000-0000-000000000001}
+      Simulation__IntervalSeconds: ${SIMULATION_INTERVAL_SECONDS:-60}
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8081/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  frontend:
+    build:
+      context: ../frontend/aquaguard-web
+      dockerfile: Dockerfile
+    environment:
+      VITE_API_BASE_URL: http://localhost:${API_PORT:-5226}/api/v1
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-5173}:5173"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:5173').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  aquaguard-postgres:

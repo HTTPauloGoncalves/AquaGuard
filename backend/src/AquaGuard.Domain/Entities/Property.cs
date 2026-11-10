@@ -6,7 +6,9 @@ namespace AquaGuard.Domain.Entities;
 public class Property
 {
     private readonly List<Station> _stations = new();
+    private readonly List<Reservoir> _reservoirs = new();
 
+    public Guid Id { get; private set; }
     public Guid OwnerId { get; set; }
     public string Name { get; private set;}
     public string? Description { get; private set; }
@@ -14,6 +16,16 @@ public class Property
     public GeoCoordinate Coordinate { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public  IReadOnlyCollection<Station> Stations => _stations;
+    public IReadOnlyCollection<Reservoir> Reservoirs => _reservoirs;
+
+    public Property(Guid id, string name)
+    {
+        Id = id;
+        Name = string.IsNullOrWhiteSpace(name) ? throw new ArgumentException("Name is required.", nameof(name)) : name;
+        Owner = "AquaGuard demo";
+        Coordinate = new GeoCoordinate("0", "0");
+        CreatedAt = DateTime.UtcNow;
+    }
 
     #pragma warning disable CS8618
     protected Property() { }
@@ -21,6 +33,7 @@ public class Property
     
     public Property(string name, string? description, string owner, string latitude, string longitude)
     {
+        Id = Guid.NewGuid();
         OwnerId = Guid.NewGuid();
         Name = name;
         Description = description;

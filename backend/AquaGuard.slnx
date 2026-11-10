@@ -5,5 +5,7 @@
     <Project Path="src/AquaGuard.Domain/AquaGuard.Domain.csproj" />
     <Project Path="src/AquaGuard.Edge/AquaGuard.Edge.csproj" />
     <Project Path="src/AquaGuard.Infrastructure/AquaGuard.Infrastructure.csproj" />
+    <Project Path="src/AquaGuard.Simulator/AquaGuard.Simulator.csproj" />
+    <Project Path="tests/AquaGuard.Tests/AquaGuard.Tests.csproj" />
   </Folder>
 </Solution>
